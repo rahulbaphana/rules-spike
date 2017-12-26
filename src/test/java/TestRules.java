@@ -1,5 +1,5 @@
 import com.tw.domain.Country;
-import com.tw.easy.rules.Gift;
+import com.tw.easy.rules.fact.Gift;
 import org.jeasy.rules.api.Facts;
 import org.jeasy.rules.api.Rule;
 import org.jeasy.rules.api.Rules;
@@ -23,7 +23,6 @@ public class TestRules {
 
         RulesEngine defaultRulesEngine = new DefaultRulesEngine();
         Map<Rule, Boolean> checkResult = defaultRulesEngine.check(new Rules(giftMVELRule), giftFacts);
-        defaultRulesEngine.fire(new Rules(giftMVELRule), giftFacts); // this is not mandatory!
 
         Assert.assertTrue(checkResult.get(giftMVELRule));
     }

@@ -1,4 +1,4 @@
-package com.tw.easy.rules;
+package com.tw.easy.rules.fact;
 
 import com.tw.domain.Country;
 import org.jeasy.rules.mvel.MVELRule;
@@ -16,8 +16,8 @@ public class Gift {
         this.action = action;
     }
 
-    public boolean isValidGift(int amountToGift) {
-        return amountToGift <= maxAmount;
+    public boolean isValidGift(int amount) {
+        return amount <= maxAmount;
     }
 
     public MVELRule toEasyRule() {
@@ -25,6 +25,6 @@ public class Gift {
                 .name("Gift rule for "+country.toString())
                 .description("if amount is within minimum "+ minAmount + " and maximum "+ maxAmount +", then auto approved")
                 .when("amountToGift <= giftRule.maxAmount")
-                .then("System.out.println(\""+action+"+\");");
+                .then("System.out.println(\""+action+"\");");
     }
 }
