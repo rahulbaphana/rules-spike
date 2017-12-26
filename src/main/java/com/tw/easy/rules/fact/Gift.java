@@ -6,7 +6,7 @@ import org.jeasy.rules.mvel.MVELRule;
 public class Gift {
     private final Country country;
     private final int minAmount;
-    public final int maxAmount;
+    private final int maxAmount;
     private final String action;
 
     public Gift(Country country, int minAmount, int maxAmount, String action) {
@@ -20,11 +20,11 @@ public class Gift {
         return amount <= maxAmount;
     }
 
-    public MVELRule toEasyRule() {
+    public MVELRule amountRule() {
         return new MVELRule()
                 .name("Gift rule for "+country.toString())
                 .description("if amount is within minimum "+ minAmount + " and maximum "+ maxAmount +", then auto approved")
-                .when("amountToGift <= giftRule.maxAmount")
+                .when("giftRule.isValidGift(amountToGift)")
                 .then("System.out.println(\""+action+"\");");
     }
 }
