@@ -1,6 +1,8 @@
 import com.tw.domain.Country;
+import com.tw.domain.Person;
 import com.tw.easy.rules.fact.Gift;
 import com.tw.reader.JsonRulesReader;
+import org.jeasy.rules.annotation.Fact;
 import org.jeasy.rules.api.Facts;
 import org.jeasy.rules.api.Rule;
 import org.jeasy.rules.api.Rules;
@@ -59,6 +61,23 @@ public class JsonRulesReaderTest {
         Map<Rule, Boolean> checkResult = defaultRulesEngine.check(new Rules(countryGiftRule), factsFor(giftAmountInUSA, 90));
 
         assertTrue(checkResult.get(countryGiftRule));
+    }
+
+    @Test
+    public void should_return_true_when_age_is_valid_for_driving() throws IOException {
+        //Arrange
+        JsonRulesReader jsonRulesReader = loadRulesReader();
+        Person personWithLegaldrivingAge =  new Person(Country.USA, 18);
+        Rule countryDrivingAgeRule = jsonRulesReader.getRuleBy("country-age-driving-rule").get();
+        Facts drivingAgeFact = new Facts();
+        drivingAgeFact.put("person", personWithLegaldrivingAge);
+
+        //Act
+        RulesEngine defaultRulesEngine = new DefaultRulesEngine();
+        Map<Rule, Boolean> checkResult = defaultRulesEngine.check(new Rules(countryDrivingAgeRule), drivingAgeFact);
+
+        //Assert
+        assertTrue(checkResult.get(countryDrivingAgeRule));
     }
 
     private Facts factsFor(Gift giftAmountInUSA, int amountToGift) {
