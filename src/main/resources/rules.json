@@ -5,7 +5,7 @@
    "priority": 1,
    "action": "System.out.println(\"Its pre approved!\");"
  }, {
-  "name": "country-age-rule",
+  "name": "country-age-driving-rule",
   "description": "Country specific rule for driving",
   "condition": "person.isDrivingAge()",
   "priority": 1,
