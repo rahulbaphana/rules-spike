@@ -16,7 +16,7 @@ public class Gift {
         this.action = action;
     }
 
-    public boolean isValidGift(int amount) {
+    public boolean isValid(int amount) {
         return amount <= maxAmount;
     }
 

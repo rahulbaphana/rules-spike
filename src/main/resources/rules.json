@@ -1,0 +1,13 @@
+[{
+   "name": "country-gift-rule",
+   "description": "Country specific rule for gifting money",
+   "condition": "giftRule.isValidGift(amountToGift)",
+   "priority": 1,
+   "action": "System.out.println(\"Its pre approved!\");"
+ }, {
+  "name": "country-age-rule",
+  "description": "Country specific rule for driving",
+  "condition": "person.isDrivingAge()",
+  "priority": 1,
+  "action": "System.out.println(\"You may drive!\");"
+}]
