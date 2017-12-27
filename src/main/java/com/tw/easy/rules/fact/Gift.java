@@ -24,7 +24,7 @@ public class Gift {
         return new MVELRule()
                 .name("Gift rule for "+country.toString())
                 .description("if amount is within minimum "+ minAmount + " and maximum "+ maxAmount +", then auto approved")
-                .when("giftRule.isValidGift(amountToGift)")
+                .when("giftRule.isValid(amountToGift)")
                 .then("System.out.println(\""+action+"\");");
     }
 }

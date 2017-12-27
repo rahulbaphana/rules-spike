@@ -1,7 +1,7 @@
 [{
    "name": "country-gift-rule",
    "description": "Country specific rule for gifting money",
-   "condition": "giftRule.isValidGift(amountToGift)",
+   "condition": "gift.isValid(amountToGift)",
    "priority": 1,
    "action": "System.out.println(\"Its pre approved!\");"
  }, {

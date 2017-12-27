@@ -10,6 +10,8 @@ import org.jeasy.rules.mvel.MVELRule;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -80,18 +82,7 @@ public class JsonRulesReaderTest {
 
 
     private JsonRulesReader loadRulesReader() throws IOException {
-        return new JsonRulesReader("[{\n" +
-                "   \"name\": \"country-gift-rule\",\n" +
-                "   \"description\": \"Country specific rule for gifting money\",\n" +
-                "   \"condition\": \"gift.isValid(amountToGift)\",\n" +
-                "   \"priority\": 1,\n" +
-                "   \"action\": \"System.out.println(\\\"Its pre approved!\\\");\"\n" +
-                " }, {\n" +
-                "  \"name\": \"country-age-rule\",\n" +
-                "  \"description\": \"Country specific rule for driving\",\n" +
-                "  \"condition\": \"person.isDrivingAge()\",\n" +
-                "  \"priority\": 1,\n" +
-                "  \"action\": \"System.out.println(\\\"You may drive!\\\");\"\n" +
-                "}]");
+        String pathOfFile = getClass().getClassLoader().getResource("rules.json").getFile();
+        return new JsonRulesReader(new String(Files.readAllBytes(Paths.get(pathOfFile))));
     }
 }
