@@ -1,6 +1,9 @@
 package com.domain;
 
-public enum Country implements DrivingAgeLimit, GiftingMoneyLimit  {
+import com.domain.country.rule.DrivingAgeLimit;
+import com.domain.country.rule.GiftingMoneyLimit;
+
+public enum Country implements DrivingAgeLimit, GiftingMoneyLimit {
     USA("USA", 18, 100);
 
     private String name;
