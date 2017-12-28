@@ -1,7 +1,7 @@
-import com.tw.domain.Country;
-import com.tw.domain.Person;
-import com.tw.easy.rules.fact.Gift;
-import com.tw.reader.JsonRulesReader;
+import com.domain.Country;
+import com.domain.Person;
+import com.easy.rules.fact.Gift;
+import com.reader.JsonRulesReader;
 import org.jeasy.rules.api.Facts;
 import org.jeasy.rules.api.Rule;
 import org.jeasy.rules.api.Rules;

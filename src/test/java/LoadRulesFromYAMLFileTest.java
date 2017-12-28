@@ -1,5 +1,5 @@
-import com.tw.domain.Country;
-import com.tw.easy.rules.fact.Gift;
+import com.domain.Country;
+import com.easy.rules.fact.Gift;
 import org.jeasy.rules.api.Facts;
 import org.jeasy.rules.api.Rule;
 import org.jeasy.rules.api.Rules;

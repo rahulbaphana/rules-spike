@@ -1,4 +1,4 @@
-package com.tw.domain;
+package com.domain;
 
 public enum Country implements DrivingAgeLimit, GiftingMoneyLimit  {
     USA("USA", 18, 100);

@@ -1,4 +1,4 @@
-package com.tw.domain;
+package com.domain;
 
 public class Person {
     Country country;

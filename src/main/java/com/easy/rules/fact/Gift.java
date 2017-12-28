@@ -1,6 +1,6 @@
-package com.tw.easy.rules.fact;
+package com.easy.rules.fact;
 
-import com.tw.domain.Country;
+import com.domain.Country;
 import org.jeasy.rules.mvel.MVELRule;
 
 public class Gift {
