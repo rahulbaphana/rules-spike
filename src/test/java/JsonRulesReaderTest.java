@@ -86,7 +86,7 @@ public class JsonRulesReaderTest {
     }
 
     private Gift giftUSAFor(int amount) {
-        return new Gift(Country.USA, amount, "Not Approved!");
+        return new Gift(Country.USA, amount);
     }
 
     private MVELRule expectedCountryGiftRule() {

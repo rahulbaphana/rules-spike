@@ -14,7 +14,7 @@ public class CountryGiftRulesTest {
 
     @Test
     public void should_approve_for_USA_when_amount_is_less_than_100_dollars() {
-        Gift giftRuleforUSA = new Gift(Country.USA, 90 , "Approved!");
+        Gift giftRuleforUSA = new Gift(Country.USA, 90);
         Rule giftMVELRule = giftRuleforUSA.amountRule();
         Facts giftFacts = new Facts();
         giftFacts.put("giftRule", giftRuleforUSA);
@@ -27,7 +27,7 @@ public class CountryGiftRulesTest {
 
     @Test
     public void should_unapprove_for_USA_when_amount_is_greater_than_100_dollars() {
-        Gift giftRuleforUSA = new Gift(Country.USA, 190, "Not Approved!");
+        Gift giftRuleforUSA = new Gift(Country.USA, 190);
         Rule giftMVELRule = giftRuleforUSA.amountRule();
         Facts giftFacts = new Facts();
         giftFacts.put("giftRule", giftRuleforUSA);

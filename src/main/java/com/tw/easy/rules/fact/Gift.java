@@ -6,12 +6,10 @@ import org.jeasy.rules.mvel.MVELRule;
 public class Gift {
     private final Country country;
     private final int amount;
-    private final String action;
 
-    public Gift(Country country, int amount, String action) {
+    public Gift(Country country, int amount) {
         this.country = country;
         this.amount = amount;
-        this.action = action;
     }
 
     public boolean isValid() {
@@ -23,6 +21,6 @@ public class Gift {
                 .name("Gift rule for "+country.toString())
                 .description("Amount within country bribery limit, then approve!")
                 .when("giftRule.isValid()")
-                .then("System.out.println(\""+action+"\");");
+                .then("System.out.println(\"Approved!\");");
     }
 }
