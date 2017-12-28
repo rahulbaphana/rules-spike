@@ -1,6 +1,6 @@
 name: "Country-Gift-Rule"
 description: "Gift amount rule per country"
-condition: "giftRule.isValidGift(amountToGift)"
+condition: "giftRule.isValid()"
 priority: 1
 actions:
   - "System.out.println(\"Its pre approved!\");"

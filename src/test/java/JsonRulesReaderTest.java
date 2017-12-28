@@ -2,7 +2,6 @@ import com.tw.domain.Country;
 import com.tw.domain.Person;
 import com.tw.easy.rules.fact.Gift;
 import com.tw.reader.JsonRulesReader;
-import org.jeasy.rules.annotation.Fact;
 import org.jeasy.rules.api.Facts;
 import org.jeasy.rules.api.Rule;
 import org.jeasy.rules.api.Rules;
@@ -42,11 +41,11 @@ public class JsonRulesReaderTest {
     @Test
     public void should_execute_gift_rule_with_failure() throws IOException {
         JsonRulesReader jsonRulesReader = loadRulesReader();
-        Gift giftAmountInUSA = legalGiftAmountInUSA();
+        Gift giftAmountInUSA = giftUSAFor(190);
         Rule countryGiftRule = jsonRulesReader.getRuleBy("country-gift-rule").get();
 
         RulesEngine defaultRulesEngine = new DefaultRulesEngine();
-        Map<Rule, Boolean> checkResult = defaultRulesEngine.check(new Rules(countryGiftRule), factsFor(giftAmountInUSA, 190));
+        Map<Rule, Boolean> checkResult = defaultRulesEngine.check(new Rules(countryGiftRule), factsFor(giftAmountInUSA));
 
         assertFalse(checkResult.get(countryGiftRule));
     }
@@ -54,11 +53,11 @@ public class JsonRulesReaderTest {
     @Test
     public void should_execute_gift_rule_with_approval() throws IOException {
         JsonRulesReader jsonRulesReader = loadRulesReader();
-        Gift giftAmountInUSA = legalGiftAmountInUSA();
+        Gift giftAmountInUSA = giftUSAFor(90);
         Rule countryGiftRule = jsonRulesReader.getRuleBy("country-gift-rule").get();
 
         RulesEngine defaultRulesEngine = new DefaultRulesEngine();
-        Map<Rule, Boolean> checkResult = defaultRulesEngine.check(new Rules(countryGiftRule), factsFor(giftAmountInUSA, 90));
+        Map<Rule, Boolean> checkResult = defaultRulesEngine.check(new Rules(countryGiftRule), factsFor(giftAmountInUSA));
 
         assertTrue(checkResult.get(countryGiftRule));
     }
@@ -80,15 +79,14 @@ public class JsonRulesReaderTest {
         assertTrue(checkResult.get(countryDrivingAgeRule));
     }
 
-    private Facts factsFor(Gift giftAmountInUSA, int amountToGift) {
+    private Facts factsFor(Gift giftAmountInUSA) {
         Facts giftFacts = new Facts();
         giftFacts.put("gift", giftAmountInUSA);
-        giftFacts.put("amountToGift", amountToGift);
         return giftFacts;
     }
 
-    private Gift legalGiftAmountInUSA() {
-        return new Gift(Country.USA, 0, 100, "Not Approved!");
+    private Gift giftUSAFor(int amount) {
+        return new Gift(Country.USA, amount, "Not Approved!");
     }
 
     private MVELRule expectedCountryGiftRule() {

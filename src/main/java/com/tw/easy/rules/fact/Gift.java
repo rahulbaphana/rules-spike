@@ -5,26 +5,24 @@ import org.jeasy.rules.mvel.MVELRule;
 
 public class Gift {
     private final Country country;
-    private final int minAmount;
-    private final int maxAmount;
+    private final int amount;
     private final String action;
 
-    public Gift(Country country, int minAmount, int maxAmount, String action) {
+    public Gift(Country country, int amount, String action) {
         this.country = country;
-        this.minAmount = minAmount;
-        this.maxAmount = maxAmount;
+        this.amount = amount;
         this.action = action;
     }
 
-    public boolean isValid(int amount) {
-        return amount <= maxAmount;
+    public boolean isValid() {
+        return country.isWithingGifting(this.amount);
     }
 
     public MVELRule amountRule() {
         return new MVELRule()
                 .name("Gift rule for "+country.toString())
-                .description("if amount is within minimum "+ minAmount + " and maximum "+ maxAmount +", then auto approved")
-                .when("giftRule.isValid(amountToGift)")
+                .description("Amount within country bribery limit, then approve!")
+                .when("giftRule.isValid()")
                 .then("System.out.println(\""+action+"\");");
     }
 }

@@ -20,8 +20,7 @@ public class LoadRulesFromYAMLFileTest {
         String giftRuleYmlFile = getClass().getClassLoader().getResource("gift-rule.yml").getFile();
         Rule giftMVELRule = MVELRuleFactory.createRuleFrom(new File(giftRuleYmlFile));
         Facts giftFacts = new Facts();
-        giftFacts.put("giftRule", new Gift(Country.USA, 0, 100, "Not Approved!"));
-        giftFacts.put("amountToGift", 190);
+        giftFacts.put("giftRule", new Gift(Country.USA, 190, "Not Approved!"));
 
         RulesEngine defaultRulesEngine = new DefaultRulesEngine();
         Map<Rule, Boolean> checkResult = defaultRulesEngine.check(new Rules(giftMVELRule), giftFacts);
